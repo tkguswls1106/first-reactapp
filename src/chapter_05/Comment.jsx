@@ -36,15 +36,15 @@ function Comment(props) {
     return (
         <div style={styles.wrapper}>
             <div style={styles.imageContainer}>
-                <img
+                <img 
                     src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
                     style={styles.image}
                 />
             </div>
 
             <div style={styles.contentContainer}>
-                <span style={styles.nameText}>사현진</span>
-                <span style={styles.commentText}>제가 만든 첫 컴포넌트입니다.</span>
+                <span style={styles.nameText}>{props.name}</span>
+                <span style={styles.commentText}>{props.comment}</span>
             </div>
         </div>
     );

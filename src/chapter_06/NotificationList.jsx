@@ -3,12 +3,15 @@ import Notification from "./Notification";
 
 const reservedNotifications = [
     {
+        id: 1,
         message: "안녕하세요, 오늘 일정을 알려드립니다.",
     },
     {
+        id: 2,
         message: "점심식사 시간입니다.",
     },
     {
+        id: 3,
         message: "이제 곧 미팅이 시작됩니다.",
     },
 ];
@@ -42,6 +45,9 @@ class NotificationList extends React.Component {  // 내생각엔 클래스 컴�
             }
             else
             {
+                this.setState({
+                    notifications: [],  // 생명주기 사망(Unmount)을 위해 적은 코드이다. 컴포넌트들이 모두 출력완료되어 else문이 실행될때, 다시 값을 비워 사망시켜주는것이다.
+                });
                 clearInterval(timer);
             }
         }, 1000);  // 1000이 setInterval 함수의 두번째 매개변수 인자 부분이다.
@@ -53,6 +59,8 @@ class NotificationList extends React.Component {  // 내생각엔 클래스 컴�
                 {this.state.notifications.map((notification) => {  // 이 코드줄의 notifications는 state의 notifications 이고, notification은 map메소드의 사용을 위해 매개변수로 지정한 새로운 변수명이다.
                     return (
                         <Notification
+                            key={notification.id}  // 여기서 key는 리액트 엘리먼트를 구분하기위한 고유의 값인데, 랩(wrap)함수?를 사용할때에는 필수적으로 들어가야한다. 안쓰면 경고 메세지가 출력된다.
+                            id={notification.id}
                             message={notification.message}  // 이 코드줄의 notification은, state의 notifications 에서 추출한 map메소드의 매개변수이다.
                         />
                     );

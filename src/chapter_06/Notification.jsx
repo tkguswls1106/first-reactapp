@@ -22,6 +22,18 @@ class Notification extends React.Component {  // 내생각엔 클래스 컴포�
         this.state = {};  // 이처럼 클래스 컴포넌트의 state는 생성자 메소드 안에 적혀진다.
     }
 
+    componentDidMount() {
+        console.log(`${this.props.id} componentDidMount() called.`);
+    }
+
+    componentDidUpdate() {
+        console.log(`${this.props.id} componentDidUpdate() called.`);
+    }
+
+    componentWillUnmount() {
+        console.log(`${this.props.id} componentWillUnmount() called.`);
+    }
+
     render() {
         return (
             <div style={styles.wrapper}>

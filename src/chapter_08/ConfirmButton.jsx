@@ -7,11 +7,9 @@ class ConfirmButton extends React.Component {
         this.state = {
             isConfirmed: false,
         };
-
-        this.handleConfirm = this.handleConfirm.bind(this);
     }
 
-    handleConfirm() {
+    handleConfirm = ()  => {
         this.setState((prevState) => ({  // setState 함수 사용 시 이전 state 값을 사용하고 싶으면 prevState를 이용하면 된다.
             isConfirmed: !prevState.isConfirmed,  // 이벤트 핸들러로 handleConfirm()가 실행되면, 이전의 state를 불러와 !로 반전시키고 그걸 state로 덮어씌우는것이다.
         }));

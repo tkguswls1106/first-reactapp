@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function ConfirmButton(props) {
     const [isConfirmed, setIsConfirmed] = useState(false);
 
-    function handleConfirm() {  // 함수 컴포넌트로 '함수 안에 함수로 정의' 방법
+    const handleConfirm = () => {  // 함수 컴포넌트로 'arrow function을 사용하여 정의' 방법
         setIsConfirmed((prevIsConfirmed) => !prevIsConfirmed);  // prevState 같은 용도이지 않을까 싶다
     };
 

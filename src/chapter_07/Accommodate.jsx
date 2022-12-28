@@ -7,7 +7,7 @@ function Accommodate(props) {
     const [isFull, setIsFull] = useState(false);
     const [count, increaseCount, decreaseCount] = useCounter(0);  // Custom Hook 호출함.
 
-    useEffect(() => {  // 위에꺼 useEffect() 훅
+    useEffect(() => {  // 위에꺼 useEffect() 훅  // 의존성 배열이 없으므로, 함수 state인, isFull 값이 바뀔때와 count 값이 바뀔때 모두 실행됨.
         console.log("======================");
         console.log("useEffect() is called.");
         console.log(`isFull: ${isFull}`);
@@ -18,7 +18,7 @@ function Accommodate(props) {
     // count값은 변하지않아 밑에꺼 useEffect() 는 실행되지 않고, 이 useEffect() 훅만 한번더 isFull=true값 기준으로 실행된다.
     // count값을 10에서 9로 줄일때에도 마찬가지의 이유로, 위아래 useEffect() 훅을 전부 isFull=true값 기준으로 둘다 모두 출력후, 밑에꺼 useEffect() 말고 이 useEffect() 훅만 한번더 isFull=false값 기준으로 실행된다.
 
-    useEffect(() => {  // 밑에꺼 useEffect() 훅
+    useEffect(() => {  // 밑에꺼 useEffect() 훅  // 의존성 배열 [count]가 있으므로, count 값이 바뀔때만 실행됨.
         setIsFull(count >= MAX_CAPACITY);  // isFull = boolean(조건 count >= MAX_CAPACITY) 이라는 의미이다.
         console.log(`Current count value: ${count}`);
     }, [count]);  // 의존성 배열이 있는 useEffect()  // 출생(mount)과, 의존성 배열 업데이트인 인생(update)때 실행됨.
@@ -37,6 +37,7 @@ function Accommodate(props) {
             {isFull && <p style={{ color: "red" }}>정원이 가득찼습니다.</p>}
         </div>
     );
+    // increaseCount와 decreaseCount는 아마 변수형 함수인것같다.함수 실행.
 }
 
 export default Accommodate;
